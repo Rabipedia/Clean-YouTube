@@ -17,12 +17,14 @@ const usePlaylist = () => {
         
         let result;
 
+        setLoading(true);
         try{
             result = await getPlaylist(playlistId);
-        } catch {
-            console.log(e.response?.data?.data?.message || 'Something went wrong!');
+            setError('');
+        } catch (e) {
+            setError(e.response?.data?.error?.message || 'Something went wrong!');
         } finally {
-            setLoading(true);
+            setLoading(false);
         };
 
         let cid, ct;
@@ -88,6 +90,8 @@ const usePlaylist = () => {
         playlists: state.playlists,
         favorites: getPlaylistsByIds(state.favorites),
         recentPlaylists: getPlaylistsByIds(state.recentPlaylists),
+        error,
+        loading,
         getPlaylistById,
         addToRecent,
         addToFavorites,
