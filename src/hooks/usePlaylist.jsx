@@ -7,15 +7,27 @@ const usePlaylist = () => {
         favourites: [],
         recentPlaylist: []
     });
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const getPlaylistById = async (playlistId, force=false) => {
         if(state.playlists[playlistId] && !force) {
             return;
         }
+        
+        let result;
 
-         let result = await getPlaylist(playlistId);
-         let cid, ct;
-         result = result.map(item => {
+        try{
+            result = await getPlaylist(playlistId);
+        } catch {
+            console.log(e.response?.data?.data?.message || 'Something went wrong!');
+        } finally {
+            setLoading(true);
+        };
+
+        let cid, ct;
+      
+        result = result.map(item => {
           
             const {
                 channelId,
