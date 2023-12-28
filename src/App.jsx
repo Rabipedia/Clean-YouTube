@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import getPlaylist from './api'
 import usePlaylist from './hooks/usePlaylist';
+import { CssBaseline } from '@mui/material';
+import Navbar from './components/Navbar';
 
 
 function App() {
@@ -14,7 +16,10 @@ function App() {
 
   return (
     <>
-      <h3>Clean YouTube</h3>
+      <CssBaseline/>
+      <div>
+        <Navbar/>
+      </div>
     </>
   )
 }
