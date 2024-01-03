@@ -7,18 +7,15 @@ import Navbar from './components/Navbar';
 
 function App() {
   const {getPlaylistById, playlists, error, loading} = usePlaylist();
-
- 
   
-  useEffect(()=> {
-    getPlaylistById('PL_XxuZqN0xVD0op-QDEgyXFA4fRPChvkl');
-  }, []);
+  console.log(playlists);
+  console.log('error', error)
 
   return (
     <>
       <CssBaseline/>
       <div>
-        <Navbar/>
+        <Navbar getPlaylistById={getPlaylistById}/>
       </div>
     </>
   )

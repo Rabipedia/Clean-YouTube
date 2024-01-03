@@ -8,12 +8,19 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const PlaylistForm = ({open, handleClose}) => {
+const PlaylistForm = ({open, handleClose, getPlaylistId })  => {
     const [state, setState] = useState();
 
-    const handleSubmit = (e) => {
-
-    }
+    const handleSubmit = () => {
+      //Todo: handle url later.
+      if(!state) {
+        alert('Invalid State');
+      } else {
+        getPlaylistId(state);
+        setState('');
+        handleClose();
+      }
+    };
   
   return (
       <Dialog open={open} onClose={handleClose}>
@@ -30,11 +37,12 @@ const PlaylistForm = ({open, handleClose}) => {
             id="name"
             fullWidth
             variant="standard"
+            onChange={(e) => setState(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={handleSubmit}>Add Playlist</Button>
         </DialogActions>
       </Dialog>
   );

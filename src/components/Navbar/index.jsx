@@ -13,8 +13,9 @@ import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Button, Container, Stack } from '@mui/material';
+import PlaylistForm from '../PlaylistForm';
 
-const Navbar = () => {
+const Navbar = ({getPlaylistById}) => {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -25,6 +26,9 @@ const Navbar = () => {
       setOpen(false);
     };
     
+    const getPlaylistId = (playlistId) => {
+      getPlaylistById(playlistId);
+    }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" color='default' sx={{py: 2}}>
@@ -38,7 +42,8 @@ const Navbar = () => {
                     By rabipedia
                 </Typography>
             </Stack>
-            <Button variant='contained'>Add Playlist</Button>
+            <Button variant='contained' onClick={handleClickOpen}>Add Playlist</Button>
+            <PlaylistForm open={open} handleClickOpen={handleClose} handleClose={handleClose} getPlaylistId={getPlaylistId}></PlaylistForm>
             </Toolbar>
         </Container>
       </AppBar>
