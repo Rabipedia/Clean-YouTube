@@ -36,17 +36,17 @@ const getPlaylist = async (playlistId) => {
             thumbnail: medium,
             contentDetails: item.contentDetails
         }
+     });
 
-        return {
-            playlistId,
-            playlistTitle,
-            playlistDescription,
-            playlistThumnail: thumbnails.default,
-            channelId,
-            channelTitle,
-            playlistItems
-        }
-     })
+     return {
+        playlistId,
+        playlistTitle,
+        playlistDescription,
+        playlistThumnail: thumbnails.default,
+        channelId,
+        channelTitle,
+        playlistItems
+    }
 
 }
 
