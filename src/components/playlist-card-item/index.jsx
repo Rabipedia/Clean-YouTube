@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
+import {Link} from 'react-router-dom'
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
@@ -8,7 +9,7 @@ import { Box, Button, Stack } from '@mui/material';
 import { PlayCircleOutline } from '@mui/icons-material';
 
 
-const PlaylistCardItem = ({playlistThumbnail, playlistTitle, channelTitle}) => {
+const PlaylistCardItem = ({playlistThumbnail, playlistTitle, channelTitle, playlistId}) => {
  
   return (
     <Card sx={{ 
@@ -36,7 +37,7 @@ const PlaylistCardItem = ({playlistThumbnail, playlistTitle, channelTitle}) => {
       </CardContent>
       <Box sx={{flexGrow: 1}}></Box>
       <CardActions disableSpacing>
-        <Button>
+        <Button to={`/player/${playlistId}`} component={Link}>
            <Stack direction={'row'} spacing={1} alignItems={'center'}>
             <PlayCircleOutline/>
             <Typography variant='body2' fontWeight={600}>Start Tutorial</Typography>
