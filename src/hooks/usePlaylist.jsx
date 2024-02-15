@@ -4,7 +4,7 @@ import storage from "../utils/Storage";
 
 const INIT_STATE = {
     playlists: {},
-    favourites: [],
+    favorites: [],
     recentPlaylist: []
 };
 const usePlaylist = () => {
@@ -52,7 +52,7 @@ const usePlaylist = () => {
     const addToFavorites = (playlistId) => {
         setState(prev => ({
             ...prev,
-            favourites: [...prev, playlistId]
+            favorites: [...prev, playlistId]
         }))   
     };
 

@@ -2,11 +2,18 @@ import { useEffect, useState } from 'react'
 import getPlaylist from './api'
 import usePlaylist from './hooks/usePlaylist';
 import { Container, CssBaseline, Grid, Typography } from '@mui/material';
+import { useStoreActions } from 'easy-peasy';
 import Navbar from './components/Navbar';
 import PlaylistCardItem from './components/playlist-card-item';
 import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 
+const playlistID = 'PLKgLo6H-44PKWV8pXR5y4VFHRifZ7yv7f';
 const HomePage = ({playlistArray}) => {
+
+ const playlist = useStoreActions(actions => actions.playList);
+
+ console.log(playlist);
+
   return (
     <Container maxWidth={'lg'} sx={{my: 16}}>
         {
@@ -50,10 +57,10 @@ const PlayerPage = ({playLists}) => {
 
 function App() {
   const {getPlaylistById, playlists, error, loading} = usePlaylist();
-  console.log(playlists);
+  
  
   const playlistArray = Object.values(playlists);
-  console.log(playlistArray);
+  
 
   return (
     <BrowserRouter>
