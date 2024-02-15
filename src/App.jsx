@@ -10,9 +10,12 @@ import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 const playlistID = 'PLKgLo6H-44PKWV8pXR5y4VFHRifZ7yv7f';
 const HomePage = ({playlistArray}) => {
 
- const playlist = useStoreActions(actions => actions.playList);
+ const playlist = useStoreActions(actions => actions.playlist);
+ 
+ useEffect(()=> {
+  playlist.getPlaylistData(playlistID);
+ },[])
 
- console.log(playlist);
 
   return (
     <Container maxWidth={'lg'} sx={{my: 16}}>
