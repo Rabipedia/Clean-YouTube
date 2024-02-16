@@ -14,7 +14,7 @@ const playlistModel = persist({
     setError: action((state, payload) => {
         state.error = payload;
     }),
-    getPlaylist: thunk(async ({addPlaylist}, playlistId, setError, setLoading {getState}) => {
+    getPlaylist: thunk(async ({addPlaylist}, playlistId, setError, setLoading, {getState}) => {
         if(getState().data[playlistId]){
             return;
         }
