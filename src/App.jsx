@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import getPlaylist from './api'
 import usePlaylist from './hooks/usePlaylist';
 import { Container, CssBaseline, Grid, Typography } from '@mui/material';
 import { useStoreActions } from 'easy-peasy';
