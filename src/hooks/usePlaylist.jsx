@@ -70,7 +70,7 @@ const usePlaylist = () => {
     return {
         playlists: state.playlists,
         favorites: getPlaylistsByIds(state.favorites),
-        recentPlaylists: getPlaylistsByIds(state.recentPlaylists),
+        recentPlaylists: getPlaylistsByIds(state.recentPlaylist),
         error,
         loading,
         getPlaylistById,

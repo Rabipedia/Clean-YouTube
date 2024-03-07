@@ -8,7 +8,7 @@ import recentModel from "./recent-model";
 const store = createStore({
     playlist: playlistModel,
     favorites: favoriteModel,
-    recent: recentModel,
+    recents: recentModel,
 });
 
 export default store;

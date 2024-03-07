@@ -39,7 +39,7 @@ const Navbar = ({getPlaylistById}) => {
                 </Typography>
             </Stack>
             <Button variant='contained' onClick={handleClickOpen}>Add Playlist</Button>
-            <PlaylistForm open={open} handleClickOpen={handleClose} handleClose={handleClose} getPlaylistId={getPlaylistId}></PlaylistForm>
+            <PlaylistForm open={open} handleClickOpen={handleClickOpen} handleClose={handleClose} getPlaylistId={getPlaylistId}></PlaylistForm>
             </Toolbar>
         </Container>
       </AppBar>

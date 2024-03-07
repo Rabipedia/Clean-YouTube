@@ -5,65 +5,15 @@ import { useStoreActions } from 'easy-peasy';
 import Navbar from './components/Navbar';
 import PlaylistCardItem from './components/playlist-card-item';
 import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
-
-const playlistID = 'PLKgLo6H-44PKWV8pXR5y4VFHRifZ7yv7f';
-const HomePage = ({playlistArray}) => {
-
- const playlist = useStoreActions(actions => actions.playlist);
- 
- useEffect(()=> {
-  playlist.getPlaylist(playlistID);
- },[])
-
-
-  return (
-    <Container maxWidth={'lg'} sx={{my: 16}}>
-        {
-          playlistArray.length > 0 && (
-            <Grid container alignItems={'stretch'}>
-              {playlistArray.map((item) => (
-                <Grid item  xs={12} md={6} lg={4} mb={2}>
-                  <PlaylistCardItem
-                    key={item.playlistId}
-                    playlistId={item.playlistId}
-                    playlistThumbnail={item.playlistThumbnail}
-                    playlistTitle={item.playlistTitle}
-                    channelTitle={item.channelTitle}
-                  />
-                </Grid>))}
-            </Grid>
-          )
-        }
-      </Container>
-  )
-};
-
-const NotFound = () => (
-  <Container  maxWidth={'lg'} sx={{my: 16}}>
-    <Typography variant='h2' align='center'>404 Page Not Found!</Typography>
-  </Container>
-);
-
-const PlayerPage = ({playLists}) => {
-  const {playlistId} = useParams();
-  const current = playLists[playlistId];
-  return (
-    <Container maxWidth={'lg'} sx={{my: 16}}>
-      <Typography variant='h3'>{current.playlistTitle}</Typography>
-      <Typography variant='body1'>{current.playlistDescription}</Typography>
-    </Container>
-
-  )
-}
-
+import HomePage from './components/Home';
+import NotFound from './components/NotFound';
+import PlayerPage from './components/PlayerPage';
 
 function App() {
-  const {getPlaylistById, playlists, error, loading} = usePlaylist();
-  
- 
+  const {getPlaylistById, playlists, error, loading, recentPlaylists, favorites} = usePlaylist();
   const playlistArray = Object.values(playlists);
+  console.log(playlists);
   
-
   return (
     <BrowserRouter>
       <CssBaseline/>
@@ -77,7 +27,7 @@ function App() {
         />
         <Route
           path='/player/:playlistId'
-          element={<PlayerPage playLists={playlists}/>}
+          element={<PlayerPage playlists={playlists}/>}
         />
         <Route
           path='*'
